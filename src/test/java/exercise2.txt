@@ -1,0 +1,25 @@
+Exercise 2. Image a case when you need to cover a new endpoint (GET
+api.openweathermap.org/data/2.5/forecast) by the tests on a project. Requirements can be
+found on https://openweathermap.org/forecast5. Tests should be implemented on Java.
+Your tasks:
+- to design the test automation framework for RESTful tests using the best practices;
+- to design and implement RESTful tests for the endpoint after which you will be ready to
+say that it is fully tested.
+
+
+e37995824254fab12b41ed22613f4125
+
+By city name
+api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
+api.openweathermap.org/data/2.5/forecast?q=London,uk&APPID={{APIKEY}}
+
+By city ID
+api.openweathermap.org/data/2.5/forecast?id={city ID}
+api.openweathermap.org/data/2.5/forecast?id=707860&APPID={{APIKEY}}
+
+By geographic coordinates
+api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}
+api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&APPID={{APIKEY}}
+
+By ZIP code
+api.openweathermap.org/data/2.5/forecast?zip={zip code},{country code}

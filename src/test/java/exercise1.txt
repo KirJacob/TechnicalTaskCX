@@ -1,0 +1,7 @@
+Exercise 1. A 3x3 grid is filled with digits (0 ≤ d ≤ 9). Example of the grid:
+5 2 2
+0 3 6
+4 4 1
+The sum of each row, and each column, and each diagonal has the value 9. Implement a Java
+method which effectively calculates a number of ways filling a 3x3 grid with the digits (0 ≤ d ≤ 9)
+so that each row, each column, and both diagonals have the same sum.
