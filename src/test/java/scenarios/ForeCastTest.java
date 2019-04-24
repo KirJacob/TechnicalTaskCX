@@ -31,7 +31,8 @@ public class ForeCastTest {
     @Test(priority = 1, enabled = true)
     public void testCityByName200(){
         log.info("TEST> verify that GET by cityName returns 200");
-        Response response = forecastExplorer.getForecastByCityName(CityData.SAN_MATEO_US);
+        Response response = forecastExplorer.getForecastByCityName(CityData.SAN_MATEO_US.getCityName());
+        Assert.assertEquals(response.statusCode(), 200);
         String result = response.asString();
         log.info("result={}", result);
     }
@@ -39,7 +40,7 @@ public class ForeCastTest {
     @Test(priority = 2, enabled = true)
     public void testCityByCityId200(){
         log.info("TEST> verify that GET by cityId returns 200");
-        Response response = forecastExplorer.getForecastByCityId(CityData.SAN_MATEO_US);
+        Response response = forecastExplorer.getForecastByCityId("5392423");
         String result = response.asString();
         log.info("result={}", result);
     }
@@ -47,7 +48,7 @@ public class ForeCastTest {
     @Test(priority = 3, enabled = true)
     public void testCityByCityCoord200(){
         log.info("TEST> verify that GET by city coordinates returns 200");
-        Response response = forecastExplorer.getForecastByCityCoordinates(CityData.SAN_MATEO_US);
+        Response response = forecastExplorer.getForecastByCityCoordinates("-122.3067", "37.544");
         String result = response.asString();
         log.info("result={}", result);
     }
@@ -55,7 +56,7 @@ public class ForeCastTest {
     @Test(priority = 4, enabled = true)
     public void testCityByCityZipCode200(){
         log.info("TEST> verify that GET by city zipCode returns 200");
-        Response response = forecastExplorer.getForecastByZipCode(CityData.SAN_MATEO_US);
+        Response response = forecastExplorer.getForecastByZipCode("94497");
         String result = response.asString();
         log.info("result={}", result);
     }
@@ -64,14 +65,14 @@ public class ForeCastTest {
     public void testThatDifferentGetByCityReturnsSame(){
         log.info("TEST> verify that different GET city results returns same ID for city");
 
-        Response responseById = forecastExplorer.getForecastByCityId(CityData.SAN_MATEO_US);
+        Response responseById = forecastExplorer.getForecastByCityId("5392423");
         int idById = new JSONObject(responseById.asString()).getJSONObject("city").getInt("id");
 
-        Response responseByName = forecastExplorer.getForecastByCityName(CityData.SAN_MATEO_US);
+        Response responseByName = forecastExplorer.getForecastByCityName(CityData.SAN_MATEO_US.getCityName());
         int idByName = new JSONObject(responseByName.asString()).getJSONObject("city").getInt("id");
         Assert.assertEquals(idByName, idById, "get city by name doesn't return correct id");
 
-        Response responseByCoord = forecastExplorer.getForecastByCityCoordinates(CityData.SAN_MATEO_US);
+        Response responseByCoord = forecastExplorer.getForecastByCityCoordinates("-122.3067", "37.544");
         int idByCoord = new JSONObject(responseByCoord.asString()).getJSONObject("city").getInt("id");
         Assert.assertEquals(idByCoord, idById, "get city by Coord doesn't return correct id");
 

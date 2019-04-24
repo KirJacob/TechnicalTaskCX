@@ -5,7 +5,8 @@
 
     <test name="ForecastTest">
         <classes>
-            <class name="scenarios.ForeCastTest"/>
+<!--            <class name="scenarios.ForeCastTest"/>-->
+            <class name="TestRunner"/>
         </classes>
     </test>
 
